@@ -7,7 +7,7 @@ var PropTypes = require('./PropTypes');
  *
  * Example:
  *
- *   var MyLink = React.createClass({
+ *   var MyLink = CreateReactClass({
  *     mixins: [ Router.Navigation ],
  *     handleClick(event) {
  *       event.preventDefault();

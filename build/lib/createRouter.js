@@ -2,6 +2,7 @@
 'use strict';
 
 var React = require('react');
+var CreateReactClass = require('create-react-class');
 var warning = require('./warning');
 var invariant = require('invariant');
 var canUseDOM = require('can-use-dom');
@@ -135,7 +136,7 @@ function createRouter(options) {
   // browsers that don't support the HTML history API.
   if (location === HistoryLocation && !supportsHistory()) location = RefreshLocation;
 
-  var Router = React.createClass({
+  var Router = CreateReactClass({
 
     displayName: 'Router',
 
