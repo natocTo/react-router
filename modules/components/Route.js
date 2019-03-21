@@ -25,7 +25,7 @@ var RouteHandler = require('./RouteHandler');
  *   ];
  *   
  *   Router.run(routes, function (Handler) {
- *     React.render(<Handler/>, document.body);
+ *     ReactDOM.render(<Handler/>, document.body);
  *   });
  *
  * Handlers for Route components that contain children can render their active
