@@ -1,5 +1,6 @@
 var expect = require('expect');
 var React = require('react');
+var CreateReactClass = require('create-react-class');
 var ReactDOM = require('react-dom');
 var Router = require('../../index');
 var Route = require('../Route');
@@ -13,7 +14,7 @@ describe('RouteHandler', function () {
     var updateComponentBeforeNextRender;
     var location = new TestLocation([ '/foo' ]);
 
-    var Root = React.createClass({
+    var Root = CreateReactClass({
       componentDidMount: function () {
         updateComponentBeforeNextRender = function (cb) {
           this.forceUpdate(cb);
@@ -63,7 +64,7 @@ describe('RouteHandler', function () {
   });
 
   it('renders after an update', function (done) {
-    var Nested = React.createClass({
+    var Nested = CreateReactClass({
       componentDidMount: function () {
         this.forceUpdate(finishTest);
       },
@@ -77,7 +78,7 @@ describe('RouteHandler', function () {
       }
     });
 
-    var Foo = React.createClass({
+    var Foo = CreateReactClass({
       render: function () {
         return <div>foo</div>;
       }

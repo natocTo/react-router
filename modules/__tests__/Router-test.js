@@ -1,5 +1,6 @@
 var expect = require('expect');
 var React = require('react');
+var CreateReactClass = require('create-react-class');
 var ReactDOM = require('react-dom');
 var ReactDOMServer = require('react-dom/server');
 var Router = require('../index');
@@ -190,7 +191,7 @@ describe('Router', function () {
       });
 
       it('stops waiting on router.transitionTo after another asynchronous transition ended ', function (done) {
-        var LongAsync = React.createClass({
+        var LongAsync = CreateReactClass({
           statics: {
             delay: Async.delay * 2,
 
@@ -585,7 +586,7 @@ describe('Router', function () {
       });
 
       it('ignores aborting asynchronously in willTransitionTo when aborted before router.transitionTo', function (done) {
-        var AbortAsync2 = React.createClass({
+        var AbortAsync2 = CreateReactClass({
           statics: {
             willTransitionTo: function (transition, params, query, callback) {
               transition.abort();
@@ -663,7 +664,7 @@ describe('Router', function () {
       var fromKnifeCalled = false;
       var fromSpoonCalled = false;
 
-      var Knife = React.createClass({
+      var Knife = CreateReactClass({
         statics: {
           willTransitionFrom: function () {
             fromKnifeCalled = true;
@@ -675,7 +676,7 @@ describe('Router', function () {
         }
       });
 
-      var Spoon = React.createClass({
+      var Spoon = CreateReactClass({
         statics: {
           willTransitionTo: function (transition, params, query) {
             if (query.filter === 'first') {
@@ -719,7 +720,7 @@ describe('Router', function () {
     it('sends a component instance', function (done) {
       var div = document.createElement('div');
 
-      var Bar = React.createClass({
+      var Bar = CreateReactClass({
         statics: {
           willTransitionFrom: function (transition, component) {
             expect(div.querySelector('#bar')).toBe(ReactDOM.findDOMNode(component));
@@ -754,7 +755,7 @@ describe('Router', function () {
 
       var counter = 0;
 
-      var Foo = React.createClass({
+      var Foo = CreateReactClass({
         statics: {
           willTransitionFrom: function (transition, component) {
             counter++;
@@ -766,7 +767,7 @@ describe('Router', function () {
         }
       });
 
-      var Bar = React.createClass({
+      var Bar = CreateReactClass({
         statics: {
           willTransitionFrom: function (transition, component) {
             counter++;
@@ -965,7 +966,7 @@ describe('Router.run', function () {
   });
 
   describe('ScrollToTop scrolling', function () {
-    var BigPage = React.createClass({
+    var BigPage = CreateReactClass({
       render: function () {
         return <div style={{ width: 10000, height: 10000, background: 'green' }}/>;
       }
@@ -993,7 +994,7 @@ describe('Router.run', function () {
         }).run(function (Handler) {
           ReactDOM.render(<Handler/>, div, function () {
             if (renderCount === 0) {
-              position = { x: 20, y: 50 };
+              position = { x: 20, y: 49.599998474121094 };
               window.scrollTo(position.x, position.y);
 
               setTimeout(function () {
@@ -1034,7 +1035,7 @@ describe('Router.run', function () {
   });
 
   describe('ImitateBrowserBehavior scrolling', function () {
-    var BigPage = React.createClass({
+    var BigPage = CreateReactClass({
       render: function () {
         return <div style={{ width: 10000, height: 10000, background: 'green' }}/>;
       }
@@ -1058,7 +1059,7 @@ describe('Router.run', function () {
         Router.run(routes, location, function (Handler) {
           ReactDOM.render(<Handler/>, div, function () {
             if (renderCount === 0) {
-              position = { x: 20, y: 50 };
+              position = { x: 20, y: 49.599998474121094 };
               window.scrollTo(position.x, position.y);
 
               setTimeout(function () {

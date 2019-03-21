@@ -6,7 +6,7 @@ var PropTypes = require('./PropTypes');
  *
  * Example:
  *
- *   var AboutLink = React.createClass({
+ *   var AboutLink = CreateReactClass({
  *     mixins: [ Router.State ],
  *     render() {
  *       var className = this.props.className;
@@ -14,7 +14,7 @@ var PropTypes = require('./PropTypes');
  *       if (this.isActive('about'))
  *         className += ' is-active';
  *
- *       return React.DOM.a({ className: className }, this.props.children);
+ *       return React.createElement('a', { className: className }, this.props.children);
  *     }
  *   });
  */

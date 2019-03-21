@@ -1,7 +1,8 @@
 var assert = require('assert');
 var expect = require('expect');
 var React = require('react');
-var ReactTestUtils = require('react-addons-test-utils')
+var CreateReactClass = require('create-react-class');
+var ReactTestUtils = require('react-dom/test-utils');
 var ReactDOM = require('react-dom');
 var Router = require('../../index');
 var Route = require('../Route');
@@ -14,7 +15,7 @@ var { click } = ReactTestUtils.Simulate;
 describe('A Link', function () {
   describe('with params and a query', function () {
     it('knows how to make its href', function () {
-      var LinkHandler = React.createClass({
+      var LinkHandler = CreateReactClass({
         render: function () {
           return <Link to="foo" params={{bar: 'baz'}} query={{qux: 'quux'}}>Link</Link>;
         }
@@ -39,7 +40,7 @@ describe('A Link', function () {
 
   describe('when its route is active', function () {
     it('has an active class name', function (done) {
-      var LinkHandler = React.createClass({
+      var LinkHandler = CreateReactClass({
         render: function () {
           return (
             <div>
@@ -98,7 +99,7 @@ describe('A Link', function () {
     });
 
     it('has applies activeStyle', function (done) {
-      var LinkHandler = React.createClass({
+      var LinkHandler = CreateReactClass({
         render: function () {
           return (
             <div>
@@ -159,7 +160,7 @@ describe('A Link', function () {
 
   describe('when clicked', function () {
     it('calls a user defined click handler', function (done) {
-      var LinkHandler = React.createClass({
+      var LinkHandler = CreateReactClass({
         handleClick: function (event) {
           assert.ok(true);
           done();
@@ -188,7 +189,7 @@ describe('A Link', function () {
       var div = document.createElement('div');
       var location = new TestLocation([ '/link' ]);
 
-      var LinkHandler = React.createClass({
+      var LinkHandler = CreateReactClass({
         handleClick: function () {
           // just here to make sure click handlers don't prevent it from happening
         },

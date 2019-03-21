@@ -31,7 +31,7 @@ var RouteHandler = require('./RouteHandler');
  * Handlers for Route components that contain children can render their active
  * child route using a <RouteHandler> element.
  *
- *   var App = React.createClass({
+ *   var App = CreateReactClass({
  *     render: function () {
  *       return (
  *         <div className="application">

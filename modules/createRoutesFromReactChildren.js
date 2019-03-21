@@ -5,6 +5,7 @@ var warning = require('./warning');
 var DefaultRoute = require('./components/DefaultRoute');
 var NotFoundRoute = require('./components/NotFoundRoute');
 var Redirect = require('./components/Redirect');
+var PropTypes = require('./PropTypes');
 var Route = require('./Route');
 
 function checkPropTypes(componentName, propTypes, props) {
@@ -12,7 +13,7 @@ function checkPropTypes(componentName, propTypes, props) {
 
   for (var propName in propTypes) {
     if (propTypes.hasOwnProperty(propName)) {
-      var error = propTypes[propName](props, propName, componentName);
+      var error = PropTypes.checkPropTypes(propTypes, props, propName, componentName);
 
       if (error instanceof Error)
         warning(false, error.message);

@@ -1,5 +1,6 @@
 /* jshint -W058 */
 var React = require('react');
+var CreateReactClass = require('create-react-class');
 var warning = require('./warning');
 var invariant = require('invariant');
 var canUseDOM = require('can-use-dom');
@@ -157,7 +158,7 @@ function createRouter(options) {
   if (location === HistoryLocation && !supportsHistory())
     location = RefreshLocation;
 
-  var Router = React.createClass({
+  var Router = CreateReactClass({
 
     displayName: 'Router',
 
